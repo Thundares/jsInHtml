@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Calcula área do retângulo</title>
+        <meta charset="UTC-8">
+        <style>
+            body
+            {
+                background-color: bisque;
+                text-align: center;
+            }
+
+            #rectangule
+            {
+                margin-top: 20px;
+                margin-left: auto;
+                margin-right: auto;
+                outline-style: solid;
+                outline-color: black;
+                background-color: aqua;
+                outline-width: 2px;
+                height: 20px;
+                width: 50px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Area do retângulo</h1>
+        <br>
+        <div id="output"></div>
+        <br>
+        <button onclick="newRectangule()">Recalcular</button>
+        <br>
+        <div id='rectangule'></div>
+        <script>
+            // getting div id for output
+            var output = document.querySelector('#output');
+            var altura = 0;
+            var largura = 0;
+
+            //execute for first time
+            newRectangule();
+
+            // receive two inputs
+            function receiveInput(){
+                try{
+
+                    altura = prompt('Digite a altura do retângulo');
+                    if (isNaN(altura))
+                    {
+                        throw new Error('Digite um número como entrada.');
+                    }
+
+                    largura = prompt('Digite a largura do retângulo');
+                    if (isNaN(largura))
+                    {
+                        throw new Error('Digite um número como entrada.');
+                    }
+                }
+                catch(e){
+                    console.log(e);
+                    altura = 0;
+                    largura = 0;
+                }
+            }
+
+            // calculate area
+            function calculate(alt, larg)
+            {
+                alt = parseFloat(alt);
+                larg = parseFloat(larg);
+                return alt * larg;
+            }
+
+            function newRectangule()
+            {
+                receiveInput();
+                output.innerHTML = 'Resultado: ' + calculate(altura, largura);
+                document.getElementById('rectangule').style.height = altura + 'px';
+                document.getElementById('rectangule').style.width = largura + 'px';
+            }
+
+        </script>
+    </body>
+
+</html>

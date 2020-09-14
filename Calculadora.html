@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculadora</title>
+    </head>
+    <body>
+        <h1>Calculadora feita no Javascript</h1>
+        <button onclick="soma()">+</button>
+        <button onclick="sub()">-</button>
+        <button onclick="mult()">*</button>
+        <button onclick="division()">/</button>
+        
+        <div id="output">Resultado</div>
+        
+        <script>
+            var resultado = prompt('Digite um número: ');
+            resultado = parseFloat(resultado);
+            update();
+            var segundoNumero = 0;
+            var output = document.querySelector('#output');
+
+            function update()
+            {
+                output.innerHTML = resultado;
+            }
+            
+            function soma()
+            {
+                segundoNumero = prompt('Digite o número a ser somado: ');
+                segundoNumero = parseFloat(segundoNumero);
+                resultado += segundoNumero;
+                update();
+            }
+
+            function sub()
+            {
+                segundoNumero = prompt('Digite o número para subtrair: ');
+                segundoNumero = parseFloat(segundoNumero);
+                resultado -= segundoNumero;
+                update();
+            }
+
+            function mult()
+            {
+                segundoNumero = prompt('Digite o fator de multiplicação: ');
+                segundoNumero = parseFloat(segundoNumero);
+                resultado *= segundoNumero;
+                update();
+            }
+
+            function division()
+            {
+                segundoNumero = prompt('Digite o divisor para dividir: ');
+                segundoNumero = parseFloat(segundoNumero);
+                resultado = resultado / segundoNumero;
+                update();
+            }
+
+        </script>
+        
+    </body>
+</html>

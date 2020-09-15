@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Users Control</title>
+        <meta charset="UTC-8">
+
+        <style>
+            th{
+                padding-left: 50px;
+                padding-right: 50px;
+            }
+            table{
+                margin-left: auto;
+                margin-right: auto;
+                background-color: #ddd;
+            }
+            td{
+                padding-left: 50px;
+                padding-right: 50px;
+                background-color: #eee;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <h1 style="text-align: center;">Users table</h1>
+
+        <table>
+            <thead>
+                <th>UserName</th>
+                <th>Id</th>
+                <th>Password</th>
+            </thead>
+            <tbody id="js-td">
+            </tbody>
+        </table>
+
+        <script>
+            // class definition
+            class User{
+                constructor(name, id, pass){
+                    this.UserName = name || 'vazia',
+                    this.Id = id || -1,
+                    this.Password = pass || 1111
+                }
+            };
+
+            // hardcoded users to be changed when I learn how to work with database in js
+            let user01 = new User('Zacarias', 01, 1234);
+            let user02 = new User('Vlumenau', 02, 3334);
+            let user03 = new User('Junjorri', 03, 4444);
+            let users = [user01, user02, user03];
+
+            // print users in html
+            function printHtml(arr){
+                let message = '';
+                for(let index = 0; index < arr.length; index++){
+                    message += '<tr><td>' + arr[index].UserName + '</td>' +
+                              '<td>' + arr[index].Id + '</td>' +
+                              '<td>' + arr[index].Password + '</td></tr>';
+                }
+                document.getElementById('js-td').innerHTML = message;
+            }
+
+            printHtml(users);
+            console.log('got here');
+        </script>  
+    </body>
+
+</html>

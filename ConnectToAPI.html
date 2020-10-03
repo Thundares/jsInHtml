@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Connect to cat-fact API</title>
+        <meta name="description" content="A page made to use a api">
+        <meta name="author" content="Rafael Mippo">
+        <meta name="keywords" content="cat, api, fact">
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+
+        <style>
+            body {
+                background-image: url('https://wallup.net/wp-content/uploads/2018/10/07/2170-fearless-cat-748x468.jpg');
+                background-size: cover;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            .title {
+                padding: 30px;
+                text-align: center;
+                background-color: rgba(255, 255, 255, 0.7);
+                margin: 0;
+            }
+            p {
+                background-color: rgba(255, 255, 255, 0.7);
+                font-size: 62px;
+                position: relative;
+                top: 400px;
+                margin: 0px 50px 0px;
+                padding: 15px;
+                font-family: 'Amatic SC', cursive;
+                font-weight: 700;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="title">
+            <h1>Using cat-fact Api</h1>
+        </div>
+        <div id="api-content"></div>
+
+        <script>
+            // request handler
+            var request = new XMLHttpRequest();
+
+            // using cat-facts api
+            request.open('GET', 'https://cat-fact.herokuapp.com/facts/random?&amount=1', true);
+            
+            // create element to store the fact text
+            var fact = document.createElement('p');
+            
+            request.onload = () => {
+                var data = JSON.parse(request.response);
+
+                if (request.status >= 200 && request.status < 400) {
+                    fact.textContent = data.text;
+                    //console.log();
+                }
+                else {
+                    console.log('Error');
+                }
+            };
+
+            request.send();
+
+            // DOM
+            var divToPrint = document.getElementById('api-content');
+
+            divToPrint.appendChild(fact);
+        </script>
+    </body>
+</html>
